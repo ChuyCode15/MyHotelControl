@@ -1,7 +1,5 @@
 package com.myhotelcontrol.domain.habitaciones;
 
-import com.myhotelcontrol.domain.habitaciones.dto.DatosRegistroTipoHabitacion;
-import com.myhotelcontrol.enums.TamanoCama;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,5 +34,9 @@ public class Habitacion {
     private BigDecimal precio2;
     private BigDecimal precio3;
     private BigDecimal precio4;
+
+    private Boolean activo = true;
+
+
 
 }

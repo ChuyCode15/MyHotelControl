@@ -1,6 +1,5 @@
 package com.myhotelcontrol.services;
 
-import com.myhotelcontrol.domain.habitaciones.Habitacion;
 import com.myhotelcontrol.domain.habitaciones.dto.DatosDetalleHabitacion;
 import com.myhotelcontrol.domain.habitaciones.dto.DatosRegistroTipoHabitacion;
 import com.myhotelcontrol.domain.habitaciones.mapper.HabitacioMapper;
@@ -8,6 +7,7 @@ import com.myhotelcontrol.infra.helpers.HabitacionValiadoresHelper;
 import com.myhotelcontrol.repository.HabitacionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,15 +19,19 @@ public class HabitacionService {
 
     private final HabitacionRepository habitacionRepository;
 
-
+    @Transactional
     public DatosDetalleHabitacion registrarTipoHabitacion(DatosRegistroTipoHabitacion datos) {
-        if (datos != null) {
-            habitacionValiadoresHelper.validaNombreHabitacionNoExista(datos.nombre());
-        }
+
+        habitacionValiadoresHelper.validaNombreHabitacionNoExista(datos.nombre());
+
         var habitacion = habitacioMapper.toEntiy(datos);
+
         habitacionRepository.save(habitacion);
 
-        return new DatosDetalleHabitacion(Habitacion);
+        return habitacioMapper.toDetalleDTO(habitacion);
 
     }
+
+
 }
+

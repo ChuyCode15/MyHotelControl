@@ -8,6 +8,7 @@ import java.util.List;
 public record DatosDetalleHabitacion(
         Long id,
         String nombre,
+        Integer numero,
         List<DetalleCamas>  detalleCamas,
         BigDecimal precio
 ) {
