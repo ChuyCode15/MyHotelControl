@@ -1,0 +1,33 @@
+{
+
+  "id": 34,
+  "nombre": "2026_09_22_1935_pedrito_gimenez_y_su_barquito.mp4",
+  "formato": "MP4",
+  "duracion": 23,
+  "tamaño": 124.6,
+  "url": "https://oci/user/02034034304234023423423423/mnt/volume1/videos/mi-video.mp4"
+
+},
+
+
+
+{
+  "nombre": "2026_09_22_1935_pedrito_gimenez_y_su_barquito.mp4",
+  "formato": "MP4",
+  "duracion": 23,
+  "tamaño": 124.6,
+  "url": "https://oci/user/02034034304234023423423423/mnt/volume1/videos/mi-video.mp4"
+
+}
+
+// 1. Crea la caja vacía
+const caja = new FormData();
+
+// 2. Mete el video (el archivo físico que seleccionó el usuario)
+caja.append('file', archivoVideo);
+
+// 3. Mete el nombre personalizado que generó (el String)
+caja.append('nickname', "2026_02_21_0902_pedrito.mp4");
+
+// 4. Se lo entrega a Axios para que lo mande
+axios.post('/api/upload', caja);
