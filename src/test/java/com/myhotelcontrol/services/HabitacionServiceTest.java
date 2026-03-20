@@ -54,7 +54,7 @@ class HabitacionServiceTest {
         Habitacion habitacionOne = new Habitacion();
         when(habitacioMapper.toEntiy(datosRegistro)).thenReturn(habitacionOne);
         when(habitacionRepository.save(any(Habitacion.class))).thenReturn(habitacionOne);
-        when(habitacioMapper.toDetalleDTO(any())).thenReturn(new DatosDetalleHabitacion(100L, "Suite Presidencial" , 101,null , new BigDecimal("1500.00")));
+        when(habitacioMapper.toDetalleDTO(any())).thenReturn(new DatosDetalleHabitacion(100L, "Suite Presidencial" , 101,null , new BigDecimal("1500.00"), null, null,null));
 
         // Ejecutar el metodo del service
         var resultado = habitacionService.registrarTipoHabitacion(datosRegistro);

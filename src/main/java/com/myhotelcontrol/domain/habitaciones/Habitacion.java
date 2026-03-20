@@ -37,6 +37,4 @@ public class Habitacion {
 
     private Boolean activo = true;
 
-
-
 }

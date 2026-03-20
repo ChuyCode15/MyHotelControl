@@ -20,8 +20,11 @@ public class HabitacionController {
 
     @PostMapping
     public ResponseEntity<DatosDetalleHabitacion> habitacionNueva(@RequestBody DatosRegistroTipoHabitacion datos, UriComponentsBuilder uComponentsBuilder) {
+
         var habitacionNueva = habitacionService.registrarTipoHabitacion(datos);
+
         var uri = uComponentsBuilder.path("/habitaciones/{id}").buildAndExpand(habitacionNueva.id()).toUri();
+
         return ResponseEntity.created(uri).body(habitacionNueva);
     }
 
