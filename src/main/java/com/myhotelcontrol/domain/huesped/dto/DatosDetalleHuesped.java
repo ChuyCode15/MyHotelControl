@@ -3,9 +3,11 @@ package com.myhotelcontrol.domain.huesped.dto;
 import com.myhotelcontrol.domain.huesped.Huesped;
 import com.myhotelcontrol.services.HuespedService;
 
+import java.util.UUID;
+
 public record DatosDetalleHuesped(
 
-        Long id,
+        UUID id,
         String nombre,
         Integer idCard,
         Integer telefono,

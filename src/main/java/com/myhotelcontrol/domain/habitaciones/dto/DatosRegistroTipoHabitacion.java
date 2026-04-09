@@ -1,6 +1,8 @@
 package com.myhotelcontrol.domain.habitaciones.dto;
 
+import com.myhotelcontrol.enums.TamanoCama;
 import jakarta.validation.constraints.NotNull;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,7 +25,7 @@ public record DatosRegistroTipoHabitacion(
 ) {
     public record DatosDetalleCama(
             @NotNull
-            String tamano,
+            TamanoCama tamano,
             @NotNull
             Integer cantidad
     ) {

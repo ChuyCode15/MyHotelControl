@@ -3,14 +3,15 @@ spring:
     name: My Control Hotel
 
   datasource:
-    url: jdbc:h2:mem:hotel_db;DB_CLOSE_DELAY=-1
+    url: jdbc:h2:mem:hotel_db;DB_CLOSE_DELAY=-1;MODE=MySQL;DATABASE_TO_UPPER=false
     driver-class-name: org.h2.Driver
     username: sa
     password:
 
+
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: none
     show-sql: true
     properties:
       hibernate:
@@ -19,3 +20,9 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+
+server:
+  error:
+    include-stacktrace: never
+    include-message: always
+    include-binding-errors: always

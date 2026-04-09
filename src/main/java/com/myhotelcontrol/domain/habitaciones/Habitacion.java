@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Table(name = "habitaciones")
 @Entity
@@ -18,17 +19,18 @@ import java.util.List;
 
 public class Habitacion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
 
     @Column(unique = true)
     private String nombre;
 
+    @Column(unique = true)
     private Integer numero;
 
     @ElementCollection
     @CollectionTable(name = "habitacion_camas", joinColumns = @JoinColumn(name = "habitacion_id"))
-    private List<DetalleCamas> configuracionCamas =  new ArrayList<>();
+    private List<DetalleCamas> configuracionCamas = new ArrayList<>();
 
     private BigDecimal precio;
     private BigDecimal precio2;

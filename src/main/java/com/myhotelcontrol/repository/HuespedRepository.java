@@ -4,7 +4,9 @@ import com.myhotelcontrol.domain.huesped.Huesped;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
+import java.util.UUID;
 
-public interface HuespedRepository extends JpaRepository<Huesped, Long> {
-    Optional<Huesped> findByIdCardAndActivoTrue(Integer idCard);
+public interface HuespedRepository extends JpaRepository<Huesped, UUID> {
+
+    Boolean existsByIdCardAndActivoTrue(Integer idCard);
 }

@@ -20,7 +20,9 @@ public class HuespedService {
     private final HuespedRepository huespedRepository;
 
     public DatosDetalleHuesped registrarHuesped(DatosRegistroHuesped datos) {
+
         huespedValidacionesHelper.validaHuespedNoExiste(datos.idCard());
+
         var huespedNuevo = huespedMapper.aEntidad(datos);
         huespedRepository.save(huespedNuevo);
         return new DatosDetalleHuesped(huespedNuevo);

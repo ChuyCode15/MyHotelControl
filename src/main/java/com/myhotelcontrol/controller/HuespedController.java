@@ -20,7 +20,7 @@ public class HuespedController {
     private final HuespedService huespedService;
 
     @PostMapping
-    public ResponseEntity<DatosDetalleHuesped> registrarHuesped(@RequestBody DatosRegistroHuesped datos, UriComponentsBuilder uC){
+    public ResponseEntity<DatosDetalleHuesped> registrarHuesped(@RequestBody DatosRegistroHuesped datos, UriComponentsBuilder uC) {
         var huespedNuevo = huespedService.registrarHuesped(datos);
         var uri = uC.path("/huesped/{id}").buildAndExpand(huespedNuevo.id()).toUri();
         return ResponseEntity.created(uri).body(huespedNuevo);

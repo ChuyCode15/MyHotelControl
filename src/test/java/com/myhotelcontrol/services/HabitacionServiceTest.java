@@ -4,8 +4,9 @@ import com.myhotelcontrol.domain.habitaciones.Habitacion;
 import com.myhotelcontrol.domain.habitaciones.dto.DatosDetalleHabitacion;
 import com.myhotelcontrol.domain.habitaciones.dto.DatosRegistroTipoHabitacion;
 import com.myhotelcontrol.domain.habitaciones.mapper.HabitacioMapper;
-import com.myhotelcontrol.infra.helpers.HabitacionValiadoresHelper;
+import com.myhotelcontrol.enums.TamanoCama;
 import com.myhotelcontrol.repository.HabitacionRepository;
+import com.myhotelcontrol.utils.helpers.HabitacionValidadorHelper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,15 +35,17 @@ class HabitacionServiceTest {
     private HabitacioMapper habitacioMapper;
 
     @Mock
-    private HabitacionValiadoresHelper habitacionValiadoresHelper;
+    private HabitacionValidadorHelper habitacionValidadorHelper;
 
     @Test
     @DisplayName("Debería registrar una habitación con lista de camas exitosamente")
     void registrarTipoHabitacionExitosamente() {
+
+
         // registrar unas camas
         var listaCamas = List.of(
-                new DatosRegistroTipoHabitacion.DatosDetalleCama("KING_SIZE", 1),
-                new DatosRegistroTipoHabitacion.DatosDetalleCama("INDIVIDUAL", 2)
+                new DatosRegistroTipoHabitacion.DatosDetalleCama(TamanoCama.KING_SIZE, 1),
+                new DatosRegistroTipoHabitacion.DatosDetalleCama(TamanoCama.INDIVIDUAL, 2)
         );
 
         var datosRegistro = new DatosRegistroTipoHabitacion(
@@ -54,7 +57,7 @@ class HabitacionServiceTest {
         Habitacion habitacionOne = new Habitacion();
         when(habitacioMapper.toEntiy(datosRegistro)).thenReturn(habitacionOne);
         when(habitacionRepository.save(any(Habitacion.class))).thenReturn(habitacionOne);
-        when(habitacioMapper.toDetalleDTO(any())).thenReturn(new DatosDetalleHabitacion(100L, "Suite Presidencial" , 101,null , new BigDecimal("1500.00"), null, null,null));
+        when(habitacioMapper.toDetalleDTO(any())).thenReturn(new DatosDetalleHabitacion(null, "Suite Presidencial" , 101,null , new BigDecimal("1500.00"), null, null,null));
 
         // Ejecutar el metodo del service
         var resultado = habitacionService.registrarTipoHabitacion(datosRegistro);
@@ -62,8 +65,9 @@ class HabitacionServiceTest {
         assertNotNull(resultado);
         assertEquals("Suite Presidencial", resultado.nombre());
 
+
         // verificar el llamado al validador
-        verify(habitacionValiadoresHelper, times(1)).validaNombreHabitacionNoExista(anyString());
+        verify(habitacionValidadorHelper, times(1)).validaNombreHabitacionNoExista(anyString());
         verify(habitacionRepository, times(1)).save(any(Habitacion.class));
 
 
