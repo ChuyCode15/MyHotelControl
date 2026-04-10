@@ -2,11 +2,14 @@ package com.myhotelcontrol.services;
 
 import com.myhotelcontrol.domain.huesped.Huesped;
 import com.myhotelcontrol.domain.huesped.dto.DatosDetalleHuesped;
+import com.myhotelcontrol.domain.huesped.dto.DatosDetalleListarHuesped;
 import com.myhotelcontrol.domain.huesped.dto.DatosRegistroHuesped;
 import com.myhotelcontrol.domain.huesped.mapper.HuespedMapper;
 import com.myhotelcontrol.repository.HuespedRepository;
 import com.myhotelcontrol.utils.helpers.HuespedValidacionesHelper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,5 +34,11 @@ public class HuespedService {
     private Huesped crearHuesped(DatosRegistroHuesped datos) {
         var nuevoHuesped = huespedMapper.aEntidad(datos);
         return huespedRepository.save(nuevoHuesped);
+    }
+
+    public Page<DatosDetalleListarHuesped> listarHuespedes(Pageable pageable) {
+        Page<DatosDetalleListarHuesped> listaDeHuespedes = huespedRepository.findAllByActivoTrue(pageable)
+                .map(huespedMapper::toDetalleListarDTO);
+        return listaDeHuespedes;
     }
 }

@@ -6,6 +6,7 @@ import com.myhotelcontrol.repository.HabitacionRepository;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -24,4 +25,10 @@ public class HabitacionValidadorHelper {
             throw new DuplicateResourceException("El numero de  habitacion " + numero + " ya esta registrado en el sistema");
         }
     }
+
+    public Habitacion buscarHabitacionId(UUID id) {
+        return habitacionRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(() -> new RuntimeException("Habitacion no encontrada con el id: "+ id));
+    }
+
 }

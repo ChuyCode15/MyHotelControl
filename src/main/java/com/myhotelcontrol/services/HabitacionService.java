@@ -42,9 +42,8 @@ public class HabitacionService {
     }
 
     public DatosDetalleHabitacion buscarHabitacionId(UUID id) {
-        var habitacion = habitacionRepository.findByIdAndActivoTrue(id)
-                .orElseThrow(() -> new RuntimeException("Habitacion no encontrada con el id: "+ id));
-        return  habitacioMapper.toDetalleDTO(habitacion);
+        var habitacionEncontrada = habitacionValiadoresHelper.buscarHabitacionId(id);
+        return  habitacioMapper.toDetalleDTO(habitacionEncontrada);
     }
 }
 
