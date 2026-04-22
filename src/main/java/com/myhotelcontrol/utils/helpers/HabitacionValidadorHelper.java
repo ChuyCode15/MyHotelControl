@@ -2,10 +2,12 @@ package com.myhotelcontrol.utils.helpers;
 
 import com.myhotelcontrol.domain.habitaciones.Habitacion;
 import com.myhotelcontrol.infra.helpers.exceptions.DuplicateResourceException;
+import com.myhotelcontrol.infra.helpers.exceptions.NotFoundResorceException;
 import com.myhotelcontrol.repository.HabitacionRepository;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
 import java.util.UUID;
 
 @Component
@@ -27,13 +29,16 @@ public class HabitacionValidadorHelper {
     }
 
     public Habitacion buscarHabitacionId(UUID id) {
-
         Habitacion habitacionEncontrada = habitacionRepository.findByIdAndActivoTrue(id)
                 .orElseThrow(
-                        () -> new RuntimeException("Habitacion no encontrada con el id: "+ id)
+                        () -> new RuntimeException("Habitación no encontrada con el id: " + id)
                 );
         return habitacionEncontrada;
-
     }
 
+    public void validaHabitacionExisteId(UUID uuid) {
+        if (!habitacionRepository.existsByIdAndActivoTrue(uuid)) {
+            throw new NotFoundResorceException("No existe una habitación con el Id : '" + uuid + "' registrado!");
+        }
+    }
 }

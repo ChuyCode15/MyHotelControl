@@ -31,7 +31,7 @@ public class HuespedController {
         return ResponseEntity.created(uri).body(huespedNuevo);
     }
 
-    @GetMapping({"","/"})
+    @GetMapping
     public ResponseEntity<PagedModel<DatosDetalleListarHuesped>> listarHuespedes(@PageableDefault(size = 10) Pageable pageable, PagedResourcesAssembler assembler) {
         var listaHuespedes = huespedService.listarHuespedes(pageable);
         return ResponseEntity.ok(assembler.toModel(listaHuespedes));

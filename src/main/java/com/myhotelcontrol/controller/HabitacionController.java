@@ -29,7 +29,7 @@ public class HabitacionController {
         return ResponseEntity.created(uri).body(habitacionNueva);
     }
 
-    @GetMapping({"","/"})
+    @GetMapping
     public ResponseEntity<PagedModel<DatosDetalleListarHabitacion>> listaHabitaciones(@PageableDefault(size = 10, sort = {"nombre"}) Pageable pageable, PagedResourcesAssembler assembler) {
         var listaHabitaciones = habitacionService.listarHabitaciones(pageable);
         return ResponseEntity.ok(assembler.toModel(listaHabitaciones));

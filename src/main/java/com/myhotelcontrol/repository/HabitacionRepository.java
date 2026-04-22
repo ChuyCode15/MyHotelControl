@@ -18,6 +18,7 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, UUID> {
 
     Page<Habitacion> findAllByActivoTrue(Pageable pageable);
 
-
     Optional<Habitacion> findByIdAndActivoTrue(UUID id);
+
+    Boolean existsByIdAndActivoTrue(UUID uuid);
 }
