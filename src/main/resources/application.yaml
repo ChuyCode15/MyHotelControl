@@ -1,4 +1,20 @@
+springdoc:
+
+  api-docs:
+    path: /api-docs
+    enabled: true
+
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+
+  show-actuator: true
+
+
 spring:
+
   application:
     name: My Control Hotel
 
@@ -8,11 +24,17 @@ spring:
     username: sa
     password:
 
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
 
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
+
     properties:
       hibernate:
         dialect: org.hibernate.dialect.H2Dialect
@@ -22,6 +44,7 @@ spring:
     locations: classpath:db/migration
 
 server:
+
   error:
     include-stacktrace: never
     include-message: always

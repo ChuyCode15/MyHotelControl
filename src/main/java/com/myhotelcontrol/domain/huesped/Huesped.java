@@ -6,13 +6,14 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Table(name = "clientes")
+@Table(name = "huesped")
 @Entity
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class Huesped {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
@@ -24,6 +25,7 @@ public class Huesped {
 
     private LocalDate fechaNacimiento;
 
+    @Column(unique = true)
     private Integer telefono;
 
     @Column(unique = true)

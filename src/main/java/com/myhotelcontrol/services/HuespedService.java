@@ -1,6 +1,5 @@
 package com.myhotelcontrol.services;
 
-import com.myhotelcontrol.domain.huesped.Huesped;
 import com.myhotelcontrol.domain.huesped.dto.DatosDetalleHuesped;
 import com.myhotelcontrol.domain.huesped.dto.DatosDetalleListarHuesped;
 import com.myhotelcontrol.domain.huesped.dto.DatosRegistroHuesped;
@@ -25,15 +24,11 @@ public class HuespedService {
     public DatosDetalleHuesped registrarHuesped(DatosRegistroHuesped datos) {
 
         huespedValidacionesHelper.validaHuespedNoExiste(datos.idCard());
-
+        huespedValidacionesHelper.validaNumeroNoExiste(datos.telefono());
         var huespedNuevo = huespedMapper.aEntidad(datos);
         huespedRepository.save(huespedNuevo);
-        return new DatosDetalleHuesped(huespedNuevo);
-    }
+        return huespedMapper.aDto(huespedNuevo);
 
-    private Huesped crearHuesped(DatosRegistroHuesped datos) {
-        var nuevoHuesped = huespedMapper.aEntidad(datos);
-        return huespedRepository.save(nuevoHuesped);
     }
 
     public Page<DatosDetalleListarHuesped> listarHuespedes(Pageable pageable) {
@@ -41,4 +36,5 @@ public class HuespedService {
                 .map(huespedMapper::toDetalleListarDTO);
         return listaDeHuespedes;
     }
+
 }

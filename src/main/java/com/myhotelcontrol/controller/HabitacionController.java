@@ -35,8 +35,8 @@ public class HabitacionController {
         return ResponseEntity.ok(assembler.toModel(listaHabitaciones));
     }
 
-    @GetMapping({"/id"})
-    public ResponseEntity<DatosDetalleHabitacion> habitacionId(@RequestParam UUID id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosDetalleHabitacion> habitacionId(@PathVariable UUID id) {
         var detalleHabitacionId = habitacionService.buscarHabitacionId(id);
         return ResponseEntity.ok(detalleHabitacionId);
     }

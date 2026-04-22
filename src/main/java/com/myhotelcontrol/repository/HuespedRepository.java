@@ -1,6 +1,7 @@
 package com.myhotelcontrol.repository;
 
 import com.myhotelcontrol.domain.huesped.Huesped;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,4 +12,6 @@ public interface HuespedRepository extends JpaRepository<Huesped, UUID> {
     Boolean existsByIdCardAndActivoTrue(Integer idCard);
 
     Page<Huesped> findAllByActivoTrue(Pageable pageable);
+
+    Boolean existsByTelefonoAndActivoTrue(@NotNull(message = "El teléfono es obligatorio") Integer telefono);
 }

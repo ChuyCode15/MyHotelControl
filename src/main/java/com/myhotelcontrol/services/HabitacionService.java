@@ -45,5 +45,6 @@ public class HabitacionService {
         var habitacionEncontrada = habitacionValiadoresHelper.buscarHabitacionId(id);
         return  habitacioMapper.toDetalleDTO(habitacionEncontrada);
     }
+
 }
 

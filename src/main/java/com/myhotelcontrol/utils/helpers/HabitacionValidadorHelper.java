@@ -27,8 +27,13 @@ public class HabitacionValidadorHelper {
     }
 
     public Habitacion buscarHabitacionId(UUID id) {
-        return habitacionRepository.findByIdAndActivoTrue(id)
-                .orElseThrow(() -> new RuntimeException("Habitacion no encontrada con el id: "+ id));
+
+        Habitacion habitacionEncontrada = habitacionRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(
+                        () -> new RuntimeException("Habitacion no encontrada con el id: "+ id)
+                );
+        return habitacionEncontrada;
+
     }
 
 }
