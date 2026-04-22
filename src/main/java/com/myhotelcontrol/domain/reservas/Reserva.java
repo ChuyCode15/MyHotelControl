@@ -25,7 +25,7 @@ public class Reserva {
 
     // Relación con el huésped (puede ser un ID o una entidad)
     @Column(name = "id_huesped")
-    private UUID HuespedId;
+    private UUID huespedId;
     @Column(name = "nombre_huesped")
     private String nombreHuesped;
 

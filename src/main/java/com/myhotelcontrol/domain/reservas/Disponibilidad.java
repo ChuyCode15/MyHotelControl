@@ -29,12 +29,12 @@ public class Disponibilidad {
     // Dato redundante para evitar JOIN en el tablero principal
     private String habitacionNumero;
 
-    // Solo guardamos la referencia para no sobrecargar la memoria
+/*    // Solo guardamos la referencia para no sobrecargar la memoria
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reserva_id")
-    private Reserva reserva;
+    @JoinColumn(name = "reserva_id") */
+    private UUID reservaId;
 
-    // Estado visual rápido (ej: OCUPADO, MANTENIMIENTO, PENDIENTE)
+    // Estado visual rápido (ej.: OCUPADO, MANTENIMIENTO, PENDIENTE)
     private String estado;
 
     private Boolean activo;
