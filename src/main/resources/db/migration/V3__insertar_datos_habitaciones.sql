@@ -29,6 +29,7 @@ SELECT id, 'INDIVIDUAL', 2 FROM habitaciones WHERE nombre = 'Habitación Estánd
 
 INSERT INTO habitacion_camas (habitacion_id, tamano_cama, cantidad)
 SELECT id, 'KING_SIZE', 1 FROM habitaciones WHERE nombre = 'Suite Familiar';
+
 INSERT INTO habitacion_camas (habitacion_id, tamano_cama, cantidad)
 SELECT id, 'INDIVIDUAL', 1 FROM habitaciones WHERE nombre = 'Suite Familiar';
 

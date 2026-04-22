@@ -2,12 +2,12 @@ CREATE TABLE habitaciones
 (
     id      UUID           NOT NULL,
     nombre  VARCHAR(100)   NOT NULL,
-    numero  INTEGER        NOT NULL,
+    numero  VARCHAR(50)    NOT NULL,
     precio  DECIMAL(19, 2) NOT NULL,
     precio2 DECIMAL(19, 2),
     precio3 DECIMAL(19, 2),
     precio4 DECIMAL(19, 2),
-    activo  BOOLEAN        NOT NULL DEFAULT TRUE, -- <--- Agregado para el Repositorio
+    activo  BOOLEAN        NOT NULL DEFAULT TRUE,
     PRIMARY KEY (id),
     CONSTRAINT uk_habitacion_nombre UNIQUE (nombre)
 );

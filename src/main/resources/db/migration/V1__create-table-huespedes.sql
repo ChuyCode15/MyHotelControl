@@ -1,4 +1,4 @@
-CREATE TABLE clientes
+CREATE TABLE huesped
 (
     id                 UUID         NOT NULL,
     nombre             VARCHAR(255),
@@ -10,6 +10,5 @@ CREATE TABLE clientes
     activo             BOOLEAN      NOT NULL DEFAULT TRUE,
 
     PRIMARY KEY (id),
-    CONSTRAINT uk_id_card UNIQUE (id_card),
-    CONSTRAINT uk_correo_electronico UNIQUE (correo_electronico)
+    CONSTRAINT uk_id_card UNIQUE (id_card)
 );
