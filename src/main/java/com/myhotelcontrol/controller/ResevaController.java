@@ -24,5 +24,4 @@ public class ResevaController {
         var uri = uCB.path("/reservaciones/{id}").buildAndExpand(reserva.id()).toUri();
         return ResponseEntity.created(uri).body(reserva);
     }
-
 }

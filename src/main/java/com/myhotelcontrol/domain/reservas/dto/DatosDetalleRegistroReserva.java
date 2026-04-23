@@ -20,9 +20,8 @@ public record DatosDetalleRegistroReserva(
         @Future(message = "La fecha de entrada debe ser futura")
         LocalDate fechaEntrada,
 
-        @NotNull(message = "La fecha de salida es obligatoria")
-        @Future(message = "La fecha de salida debe ser futura")
-        LocalDate fechaSalida,
+        @NotNull(message = "La fecha de entrada es obligatoria")
+        Integer cantidadNoches,
 
         // Opcional, puede ser 0
         BigDecimal montoAnticipo

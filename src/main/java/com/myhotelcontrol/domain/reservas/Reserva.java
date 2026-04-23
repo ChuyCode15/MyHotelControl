@@ -23,33 +23,37 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    // Relación con el huésped (puede ser un ID o una entidad)
     @Column(name = "id_huesped")
     private UUID huespedId;
     @Column(name = "nombre_huesped")
     private String nombreHuesped;
 
+
     @Column(name = "numero_habitacion")
     private String numeroHabitacion;
-
     @Column(name = "habitacion_id")
     private UUID habitacionId;
 
-    @Column(name = "numero_noches")
-    private Integer numeroNoches;
 
+    @Column(name = "disponibilidad_id")
+    private UUID disponibilidadId;
+
+
+    @Column(name = "cantidad_noches")
+    private Integer cantidadNoches;
     @Column(name = "fecha_entrada")
     private LocalDate fechaEntrada;
     @Column(name = "fecha_salida")
     private LocalDate fechaSalida;
 
-    // Gestión de dinero
+
     @Column(name = "precio_noche")
     private BigDecimal precioPorNoche;
     @Column(name = "monto_anticipo")
     private BigDecimal montoAnticipo;
     @Column(name = "monto_total")
     private BigDecimal montoTotal;
+
 
     @Enumerated(EnumType.STRING)
     private EstadoReserva estado = EstadoReserva.PENDIENTE;

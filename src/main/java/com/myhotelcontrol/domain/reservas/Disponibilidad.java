@@ -21,22 +21,31 @@ public class Disponibilidad {
     private UUID id;
 
     @Column(nullable = false)
-    private LocalDate fecha;
+    private LocalDate fecha; // El día específico del calendario
 
     @Column(name = "habitacion_id", nullable = false)
     private UUID habitacionId;
 
-    // Dato redundante para evitar JOIN en el tablero principal
     private String habitacionNumero;
 
-/*    // Solo guardamos la referencia para no sobrecargar la memoria
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reserva_id") */
+    @Column(name = "reserva_id")
     private UUID reservaId;
 
-    // Estado visual rápido (ej.: OCUPADO, MANTENIMIENTO, PENDIENTE)
-    private String estado;
+    // --- CAMPOS EXTRA PARA RENDIMIENTO Y UX ---
 
-    private Boolean activo;
+    @Column(name = "fecha_salida_reserva")
+    private LocalDate fechaSalidaReserva; // Para saber cuándo se libera sin ir a la tabla Reserva
+
+    @Column(name = "noche_numero")
+    private Integer nocheNumero; // Ejemplo: 1, 2, 3...
+
+    @Column(name = "total_noches")
+    private Integer totalNoches; // Para armar el "X de N" en el Front
+
+    // ------------------------------------------
+
+    private String estado; // OCUPADO, MANTENIMIENTO, BLOQUEADO
+
+    private Boolean activo = true;
 
 }
