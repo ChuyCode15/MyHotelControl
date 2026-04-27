@@ -14,7 +14,7 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, UUID> {
 
     Boolean existsByNombreAndActivoTrue(@NotNull String nombre);
 
-    Boolean existsByNumeroAndActivoTrue(@NotNull Integer numero);
+    Boolean existsByNumeroAndActivoTrue(String numero);
 
     Page<Habitacion> findAllByActivoTrue(Pageable pageable);
 

@@ -23,4 +23,5 @@ public interface DisponibilidadRepository extends JpaRepository<Disponibilidad, 
             @Param("fechaFin") LocalDate fechaFin
     );
 
+    Boolean existsByFechaAndActivoTrue(LocalDate fecha);
 }

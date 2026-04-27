@@ -8,6 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Component
@@ -22,7 +23,7 @@ public class HabitacionValidadorHelper {
         }
     }
 
-    public void validaNumeroHabitacionNoExista(@NotNull Integer numero) {
+    public void validaNumeroHabitacionNoExista(@NotNull String numero) {
         if (habitacionRepository.existsByNumeroAndActivoTrue(numero)) {
             throw new DuplicateResourceException("El numero de  habitacion " + numero + " ya esta registrado en el sistema");
         }
@@ -40,5 +41,20 @@ public class HabitacionValidadorHelper {
         if (!habitacionRepository.existsByIdAndActivoTrue(uuid)) {
             throw new NotFoundResorceException("No existe una habitación con el Id : '" + uuid + "' registrado!");
         }
+    }
+
+    public String numeroBuscarHabitacionId(UUID id) {
+        Habitacion habitacionEncontrada = habitacionRepository.findByIdAndActivoTrue(id)
+                .orElseThrow(
+                        () -> new RuntimeException("Habitación no encontrada con el id: " + id)
+                );
+        return habitacionEncontrada.getNumero();
+    }
+
+    public BigDecimal buscarPrecioHabitacionId( UUID uuid) {
+        var nummeroHabitacion = habitacionRepository.findByIdAndActivoTrue(uuid).orElseThrow(
+                () -> new NotFoundResorceException("Habitación no encontrada con el id: " + uuid)
+        );
+        return nummeroHabitacion.getPrecio();
     }
 }
