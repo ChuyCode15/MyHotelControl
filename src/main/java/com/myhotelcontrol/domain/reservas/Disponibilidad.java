@@ -1,15 +1,22 @@
 package com.myhotelcontrol.domain.reservas;
 
+import com.myhotelcontrol.enums.EstadoReserva;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
-@Table(name = "disponibilidad")
+@Table(name = "disponibilidad",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "uk_fecha_habitacion",
+                        columnNames = {"fecha", "habitacion_id"}
+                )})
 
 @Data
 @AllArgsConstructor
@@ -33,6 +40,9 @@ public class Disponibilidad {
 
     // --- CAMPOS EXTRA PARA RENDIMIENTO Y UX ---
 
+    @Column(name = "precio_dia")
+    private BigDecimal precioDia;
+
     @Column(name = "fecha_salida_reserva")
     private LocalDate fechaSalidaReserva; // Para saber cuándo se libera sin ir a la tabla Reserva
 
@@ -44,7 +54,8 @@ public class Disponibilidad {
 
     // ------------------------------------------
 
-    private String estado; // OCUPADO, MANTENIMIENTO, BLOQUEADO
+    @Enumerated(EnumType.STRING)
+    private EstadoReserva estado; // OCUPADO, MANTENIMIENTO, BLOQUEADO
 
     private Boolean activo = true;
 

@@ -20,15 +20,16 @@ public class Huesped {
 
     private String nombre;
 
-    @Column(unique = true)
+    @Column(name = "id_card", unique = true)
     private Integer idCard;
 
+    @Column(name = "fecha_nacimiento")
     private LocalDate fechaNacimiento;
 
     @Column(unique = true)
     private Integer telefono;
 
-    @Column(unique = true)
+    @Column(name = "correo_electronico", unique = true)
     private String correoElectronico;
 
     private String domicilio;

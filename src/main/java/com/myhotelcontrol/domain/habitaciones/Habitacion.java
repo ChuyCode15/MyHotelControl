@@ -26,7 +26,7 @@ public class Habitacion {
     private String nombre;
 
     @Column(unique = true)
-    private Integer numero;
+    private String numero;
 
     @ElementCollection
     @CollectionTable(name = "habitacion_camas", joinColumns = @JoinColumn(name = "habitacion_id"))

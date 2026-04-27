@@ -12,7 +12,7 @@ public record DatosRegistroTipoHabitacion(
         String nombre,
 
         @NotNull
-        Integer numero,
+        String numero,
 
         @NotNull
         List<DatosDetalleCama> configuracionCamas,
