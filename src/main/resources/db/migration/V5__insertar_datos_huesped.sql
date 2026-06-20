@@ -1,0 +1,13 @@
+-- V5__insertar_datos_huespedes.sql
+
+INSERT INTO huesped (id, nombre, id_card, fecha_nacimiento, telefono, correo_electronico, domicilio, activo) VALUES
+                                                                                                                 (RANDOM_UUID(), 'Pedro Dominguez',    12345678, '1990-03-15', 555100001, 'pedro.dominguez@email.com',  'Calle Principal 123',     TRUE),
+                                                                                                                 (RANDOM_UUID(), 'María González',     23456789, '1985-07-22', 555100002, 'maria.gonzalez@email.com',   'Av. Central 456',         TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Juan Martínez',      34567890, '1992-11-08', 555100003, 'juan.martinez@email.com',    'Calle Norte 789',         TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Ana López',          45678901, '1988-04-30', 555100004, 'ana.lopez@email.com',        'Av. Sur 321',             TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Carlos Ramírez',     56789012, '1995-09-14', 555100005, 'carlos.ramirez@email.com',   'Calle Oriente 654',       TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Laura Sánchez',      67890123, '1991-01-25', 555100006, 'laura.sanchez@email.com',    'Av. Poniente 987',        TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Roberto Flores',     78901234, '1983-06-17', 555100007, 'roberto.flores@email.com',   'Calle Segunda 147',       TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Sofía Torres',       89012345, '1997-12-03', 555100008, 'sofia.torres@email.com',     'Av. Reforma 258',         TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Miguel Herrera',     90123456, '1986-08-19', 555100009, 'miguel.herrera@email.com',   'Calle Tercera 369',       TRUE),
+                                                                                                                 (RANDOM_UUID(), 'Valentina Morales',  11223344, '1993-05-11', 555100010, 'valentina.morales@email.com','Av. Independencia 741',   TRUE);

@@ -1,7 +1,7 @@
 package com.myhotelcontrol.services;
 
 import com.myhotelcontrol.domain.reservas.Disponibilidad;
-import com.myhotelcontrol.domain.reservas.dto.DatosDetalleRegistroReserva;
+import com.myhotelcontrol.domain.reservas.dto.DatosRegistroReserva;
 import com.myhotelcontrol.domain.reservas.mapper.ReservaMapper;
 import com.myhotelcontrol.enums.EstadoReserva;
 import com.myhotelcontrol.repository.DisponibilidadRepository;
@@ -27,7 +27,7 @@ public class DisponibilidadService {
     private final ReservaMapper reservaMapper;
 
     @Transactional
-    public UUID generarRegistroDisponibilidad(DatosDetalleRegistroReserva datos, UUID reservaId) {
+    public UUID generarRegistroDisponibilidad(DatosRegistroReserva datos, UUID reservaId) {
 
         disponibilidadValidadorHelper.validaDisponibilidadDeCuarto(datos);
 
@@ -64,7 +64,7 @@ public class DisponibilidadService {
     }
 
     private Disponibilidad construirDisponibilidad(
-            DatosDetalleRegistroReserva datos,
+            DatosRegistroReserva datos,
             UUID reservaId,
             String numeroHabitacion,
             LocalDate fechaActual,

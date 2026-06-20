@@ -30,10 +30,12 @@ public class HabitacionValidadorHelper {
     }
 
     public Habitacion buscarHabitacionId(UUID id) {
+        System.out.println("Confirmado el id de la habitación :"+id );
         Habitacion habitacionEncontrada = habitacionRepository.findByIdAndActivoTrue(id)
                 .orElseThrow(
-                        () -> new RuntimeException("Habitación no encontrada con el id: " + id)
+                        () -> new NotFoundResorceException("Habitación no encontrada con el id: " + id)
                 );
+        System.out.println("Este es el nombre la habitación encontrada: " +  habitacionEncontrada.getNombre());
         return habitacionEncontrada;
     }
 
@@ -46,7 +48,7 @@ public class HabitacionValidadorHelper {
     public String numeroBuscarHabitacionId(UUID id) {
         Habitacion habitacionEncontrada = habitacionRepository.findByIdAndActivoTrue(id)
                 .orElseThrow(
-                        () -> new RuntimeException("Habitación no encontrada con el id: " + id)
+                        () -> new NotFoundResorceException("Habitación no encontrada con el id: " + id)
                 );
         return habitacionEncontrada.getNumero();
     }

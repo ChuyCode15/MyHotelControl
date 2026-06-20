@@ -1,7 +1,5 @@
 package com.myhotelcontrol.utils.helpers;
 
-import com.myhotelcontrol.domain.habitaciones.Habitacion;
-import com.myhotelcontrol.domain.habitaciones.dto.DatosDetalleHabitacion;
 import com.myhotelcontrol.domain.huesped.Huesped;
 import com.myhotelcontrol.infra.helpers.exceptions.DuplicateResourceException;
 import com.myhotelcontrol.infra.helpers.exceptions.NotFoundResorceException;

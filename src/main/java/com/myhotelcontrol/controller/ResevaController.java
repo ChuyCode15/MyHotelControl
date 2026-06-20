@@ -1,6 +1,6 @@
 package com.myhotelcontrol.controller;
 
-import com.myhotelcontrol.domain.reservas.dto.DatosDetalleRegistroReserva;
+import com.myhotelcontrol.domain.reservas.dto.DatosRegistroReserva;
 import com.myhotelcontrol.domain.reservas.dto.DatosDetalleReserva;
 import com.myhotelcontrol.services.ReservaServices;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +19,10 @@ public class ResevaController {
     public final ReservaServices reservaServices;
 
     @PostMapping
-    public ResponseEntity<DatosDetalleReserva> registrarReserva(@RequestBody DatosDetalleRegistroReserva datos, UriComponentsBuilder uCB) {
+    public ResponseEntity<DatosDetalleReserva> registrarReserva(@RequestBody DatosRegistroReserva datos, UriComponentsBuilder uCB) {
         var reserva = reservaServices.registrarReservaNueva(datos);
         var uri = uCB.path("/reservaciones/{id}").buildAndExpand(reserva.id()).toUri();
         return ResponseEntity.created(uri).body(reserva);
     }
+
 }

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Schema(description = "Datos para registrar una nueva reserva")
-public record DatosDetalleRegistroReserva(
+public record DatosRegistroReserva(
 
         @Schema(description = "ID del huésped", example = "550e8400-e29b-41d4-a716-446655440000")
         @NotNull(message = "El id del huésped es obligatorio")

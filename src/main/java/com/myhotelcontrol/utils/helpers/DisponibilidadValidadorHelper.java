@@ -1,9 +1,8 @@
 package com.myhotelcontrol.utils.helpers;
 
-import com.myhotelcontrol.domain.reservas.dto.DatosDetalleRegistroReserva;
+import com.myhotelcontrol.domain.reservas.dto.DatosRegistroReserva;
 import com.myhotelcontrol.infra.helpers.exceptions.NotFoundResorceException;
 import com.myhotelcontrol.repository.DisponibilidadRepository;
-import jakarta.validation.constraints.Future;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,9 +14,9 @@ public class DisponibilidadValidadorHelper {
 
     private final DisponibilidadRepository disponibilidadRepository;
 
-    public void validaDisponibilidadDeCuarto(DatosDetalleRegistroReserva datos) {
+    public void validaDisponibilidadDeCuarto(DatosRegistroReserva datos) {
         var fechaDeSalida = datos.fechaEntrada().plusDays(datos.cantidadNoches());
-        if (!disponibilidadRepository.existsByHabitacionIdAndFechaBetweenAndActivoTrue(datos.habitacionId(), datos.fechaEntrada(), fechaDeSalida)) {
+        if (disponibilidadRepository.existsByHabitacionIdAndFechaBetweenAndActivoTrue(datos.habitacionId(), datos.fechaEntrada(), fechaDeSalida)) {
             throw new NotFoundResorceException("Habitacion no disponible..");
         }
     }

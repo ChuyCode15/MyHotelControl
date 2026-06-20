@@ -1,6 +1,5 @@
 package com.myhotelcontrol.domain.reservas.dto;
 
-import com.myhotelcontrol.domain.reservas.Reserva;
 import com.myhotelcontrol.enums.EstadoReserva;
 
 import java.math.BigDecimal;
@@ -23,7 +22,7 @@ public record DatosDetalleReserva(
         // Fechas
         LocalDate fechaEntrada,
         LocalDate fechaSalida,
-        Integer numeroNoches,
+        Integer cantidadNoches,
 
         // Dinero
         BigDecimal precioPorNoche,

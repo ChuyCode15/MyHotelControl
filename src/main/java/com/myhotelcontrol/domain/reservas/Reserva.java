@@ -27,7 +27,7 @@ public class Reserva {
     // 👤 HUESPED - Denormalizado ⚡
     @Column(name = "huesped_id", nullable = false)
     private UUID huespedId;
-    @Column(name = "nombre_huesped", nullable = false)
+    @Column(name = "nombre_huesped")
     private String nombreHuesped;
 
     // 🏠 HABITACION - Denormalizado ⚡

@@ -2,25 +2,25 @@
 CREATE TABLE reservas
 (
     id                          UUID           NOT NULL,
-    id_huesped                  UUID           NOT NULL,
+    huesped_id                  UUID           NOT NULL,
     nombre_huesped              VARCHAR(150)   NOT NULL,
     habitacion_id               UUID           NOT NULL,
     numero_habitacion           VARCHAR(20)    NOT NULL,
     fecha_entrada               DATE           NOT NULL,
-    fecha_salida                DATE           NOT NULL,
-    cantidad_noches             INTEGER        NOT NULL,  -- ✅ era numero_noches
+    fecha_salida                DATE           ,
+    cantidad_noches             INTEGER        NOT NULL,
     precio_noche                DECIMAL(19, 2) NOT NULL,
     monto_anticipo              DECIMAL(19, 2) DEFAULT 0.00,
     monto_total                 DECIMAL(19, 2) NOT NULL,
     estado                      VARCHAR(20)    NOT NULL,
-    fecha_limite_confirmacion   TIMESTAMP,               -- ✅ Agregado
+    fecha_limite_confirmacion   TIMESTAMP,
     fecha_creacion              TIMESTAMP      NOT NULL  DEFAULT CURRENT_TIMESTAMP,
     activo                      BOOLEAN        NOT NULL  DEFAULT TRUE,
-    -- ✅ Quitamos finalizado, no está en la entidad
+
 
     PRIMARY KEY (id),
     CONSTRAINT fk_reserva_huesped
-        FOREIGN KEY (id_huesped)
+        FOREIGN KEY (huesped_id)
             REFERENCES huesped (id),
     CONSTRAINT fk_reserva_habitacion
         FOREIGN KEY (habitacion_id)
