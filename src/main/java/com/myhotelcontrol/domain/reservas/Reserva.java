@@ -59,7 +59,7 @@ public class Reserva {
 
     // 📊 ESTADO
     @Enumerated(EnumType.STRING)
-    private EstadoReserva estado = EstadoReserva.PENDIENTE;
+    private EstadoReserva estado = EstadoReserva.SOLICITUD;
 
     // ⏰ CONTROL DE TIEMPO
     @Column(name = "fecha_limite_confirmacion")

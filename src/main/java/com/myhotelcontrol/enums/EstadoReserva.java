@@ -1,8 +1,10 @@
 package com.myhotelcontrol.enums;
 
 public enum EstadoReserva {
-    PENDIENTE,   // Creada pero sin anticipo (bloqueo temporal)
-    CONFIRMADA,  // Anticipo recibido (bloqueo legal)
-    CANCELADA,   // Liberada
-    NO_SHOW
+    SOLICITUD,  // Reserva online o pendiente de revisión por el personal
+    RESERVADO,  // Reserva creada o confirmada por el personal sin anticipo requerido
+    CONFIRMADA, // Anticipo recibido y confirmado
+    CANCELADA,  // Reserva cancelada (histórico)
+    HOSPEDAJE,  // Check-in realizado (huésped activo en el hotel)
+    NO_SHOW     // No se presentó en la fecha de check-in
 }

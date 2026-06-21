@@ -79,7 +79,7 @@ public class DisponibilidadService {
         disponibilidad.setFechaSalidaReserva(fechaSalida);           // ⚡ Rendimiento
         disponibilidad.setNocheNumero(nocheNumero);                  // 📊 "Noche X..."
         disponibilidad.setTotalNoches(datos.cantidadNoches());       // 📊 "...de N"
-        disponibilidad.setEstado(EstadoReserva.PENDIENTE);           // 📋 Estado
+        disponibilidad.setEstado(EstadoReserva.SOLICITUD);           // 📋 Estado
         disponibilidad.setActivo(true);                              // 🗑️ Soft delete
 
         return disponibilidad;

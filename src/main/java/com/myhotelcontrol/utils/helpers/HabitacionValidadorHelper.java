@@ -59,4 +59,13 @@ public class HabitacionValidadorHelper {
         );
         return nummeroHabitacion.getPrecio();
     }
+
+    public BigDecimal obtenerPrecioPorHuespedes(Habitacion habitacion, int cantidadHuespedes) {
+        return switch (cantidadHuespedes) {
+            case 1 -> habitacion.getPrecio();
+            case 2 -> habitacion.getPrecio2();
+            case 3 -> habitacion.getPrecio3();
+            default -> habitacion.getPrecio4();
+        };
+    }
 }

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,6 +18,8 @@ public interface HabitacionRepository extends JpaRepository<Habitacion, UUID> {
     Boolean existsByNumeroAndActivoTrue(String numero);
 
     Page<Habitacion> findAllByActivoTrue(Pageable pageable);
+
+    List<Habitacion> findAllByActivoTrue();
 
     Optional<Habitacion> findByIdAndActivoTrue(UUID id);
 
