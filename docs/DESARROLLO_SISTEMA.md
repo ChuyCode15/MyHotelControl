@@ -19,8 +19,8 @@ Este es el módulo central del sistema. Su objetivo es gestionar el ciclo de vid
     - `RESERVADO`: Reserva confirmada por el personal sin anticipo requerido.
     - `CONFIRMADA`: Reserva con anticipo recibido y validado.
     - `CANCELADA`: Reserva cancelada (se guarda como registro histórico).
-    - `HOSPEDAJE`: Check-in realizado, huésped activo en el hotel.
     - `NO_SHOW`: No se presentó en la fecha de check-in.
+- **Nota Importante**: El estado `HOSPEDAJE` no pertenece a este módulo. La reserva solo proyecta quién llegará. Cuando el huésped hace check-in, el módulo de **Hospedajes** (futuro) toma control y la reserva se marca como completada.
 - **Acciones Pendientes (Deuda Técnica)**:
     - [ ] Implementar transiciones de estado automáticas (ej. mover a `NO_SHOW` si no hay check-in en la fecha de entrada).
     - [ ] Añadir campo `motivo_cancelacion` para auditoría.
